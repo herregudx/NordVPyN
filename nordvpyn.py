@@ -45,7 +45,7 @@ def clear_screen():
 def check_if_nordvpn_is_installed():
     # Simple check to see if NordVPN is installed
     try:
-        subprocess.run(["nordvpn1", "-v"], stdout=subprocess.DEVNULL)
+        subprocess.run(["nordvpn", "-v"], stdout=subprocess.DEVNULL)
     except FileNotFoundError:
         print("\nFailed to execute NordVPN binary. Are you sure it's installed?\n")
         print("Visit https://nordvpn.com/download/linux/ to download and install it.")
