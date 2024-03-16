@@ -1,1 +1,1 @@
-NordVPN doesn't have a GUI on Linux. This is a simple Python program to control the NordVPN client on Linux. It shows the user a menu to execute basic NordVPN commands: Connect, Disconnect, Status, Login, Account, Settings, Version.
+Since NordVPN doesn't provide a GUI on Linux I made this CLI menu to easier control the client. The application shows the user a menu to execute basic NordVPN commands: Connect, Disconnect, Status, Login, Account, Settings, Version.
