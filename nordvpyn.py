@@ -12,14 +12,29 @@ def connect():
     subprocess.run(["nordvpn", "connect"])
 
 
-def status():
+def disconnect():
+    # Disconnect from VPN
+    output = subprocess.run(["nordvpn", "disconnect"])
+
+
+def show_status():
     # Show status of VPN connection
     subprocess.run(["nordvpn", "status"])
 
 
-def disconnect():
-    # Disconnect from VPN
-    subprocess.run(["nordvpn", "disconnect"])
+def show_account_info():
+    # Show account info
+    subprocess.run(["nordvpn", "account"])
+
+
+def show_settings():
+    # Show settings
+    subprocess.run(["nordvpn", "settings"])
+
+
+def show_version():
+    # Show NordVPN version
+    subprocess.run(["nordvpn", "version"])
 
 
 def clear_screen():
@@ -30,30 +45,54 @@ def clear_screen():
 def check_if_nordvpn_is_installed():
     # Simple check to see if NordVPN is installed
     try:
-        installed = subprocess.run("nordvpn", stdout=subprocess.DEVNULL)
+        installed = subprocess.run(["nordvpn", "-v"], stdout=subprocess.DEVNULL)
     except FileNotFoundError:
-        print("\nFailed to execute NordVPN binary. Are you sure it's installed?\n")
+        print("\nFailed to execute NordVPN binary. Are you sure it's installed?")
+        print("If you are on a Debian based distro, try running: sudo apt-get install nordvpn\n")
         exit()
 
 
-def main():
+def show_basic_menu():
+    clear_screen()
     # Show the user a menu with choices
     while True:
-        menu_choice = input("\n[C]onnect, [D]isconnect, [S]tatus, [L]ogin, [Q]uit: ")
+        menu_choice = input("\n[C]onnect, [D]isconnect, [S]tatus, [M]ore, [Q]uit: ")
         clear_screen()
         if menu_choice.upper() == "C":
             connect()
         elif menu_choice.upper() == "D":
             disconnect()
         if menu_choice.upper() == "S":
-            status()
-        elif menu_choice.upper() == "L":
-            login()
+            show_status()
+        elif menu_choice.upper() == "M":
+            show_advanced_menu()
         elif menu_choice.upper() == "Q":
             exit()
 
 
+def show_advanced_menu():
+    clear_screen()
+    # Show the user a menu with more advanced choices
+    while True:
+        menu_choice = input("\n[L]ogin, [A]ccount, [S]ettings, [V]ersion, [B]ack: ")
+        clear_screen()
+        if menu_choice.upper() == "L":
+            login()
+        elif menu_choice.upper() == "A":
+            show_account_info()
+        elif menu_choice.upper() == "S":
+            show_settings()
+        elif menu_choice.upper() == "V":
+            show_version()
+        elif menu_choice.upper() == "B":
+            show_basic_menu()
+
+
+def main():
+    check_if_nordvpn_is_installed()
+    show_basic_menu()
+
+
 # Call main if not a module.
 if __name__=="__main__": 
-    check_if_nordvpn_is_installed()
     main()
