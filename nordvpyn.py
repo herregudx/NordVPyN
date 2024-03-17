@@ -2,6 +2,11 @@ import subprocess
 from sys import exit
 
 
+def main():
+    check_if_nordvpn_is_installed()
+    show_basic_menu()
+
+
 def login():
     # Login to NordVPN
     subprocess.run(["nordvpn", "login"])
@@ -87,11 +92,6 @@ def show_advanced_menu():
             show_version()
         elif menu_choice.upper() == "B":
             show_basic_menu()
-
-
-def main():
-    check_if_nordvpn_is_installed()
-    show_basic_menu()
 
 
 # Call main if not a module.
