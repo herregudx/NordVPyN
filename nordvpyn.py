@@ -1,4 +1,5 @@
 import subprocess
+import ascii_art
 from sys import exit
 
 
@@ -62,6 +63,7 @@ def show_basic_menu():
     clear_screen()
     # Show the user a menu with choices
     while True:
+        ascii_art.draw_logo()
         menu_choice = input("\n[C]onnect, [D]isconnect, [S]tatus, [M]ore, [Q]uit: ")
         clear_screen()
         if menu_choice.upper() == "C":
@@ -80,6 +82,7 @@ def show_advanced_menu():
     clear_screen()
     # Show the user a menu with more advanced choices
     while True:
+        ascii_art.draw_logo()
         menu_choice = input("\n[L]ogin, [A]ccount, [S]ettings, [V]ersion, [B]ack: ")
         clear_screen()
         if menu_choice.upper() == "L":
