@@ -1,6 +1,4 @@
 import subprocess
-#import ascii_art
-#import country
 import usermenu
 from sys import exit
 

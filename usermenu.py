@@ -1,5 +1,4 @@
 import ascii_art
-#import main
 import subprocess
 import commands
 import country

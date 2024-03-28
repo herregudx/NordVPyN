@@ -2,7 +2,7 @@ import subprocess
 
 
 def select_server_country():
-    # Attempts to set the server_country variable
+    # Let's the user set which country to connect to and verify that the server exists.
     chosen_country = input("\nSpecify country (type 'list' to show available choices): ")
     if chosen_country.lower() == "list":
         subprocess.run(["nordvpn", "countries"])

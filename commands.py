@@ -1,5 +1,6 @@
 import subprocess
 
+
 def login():
     # Login to NordVPN
     subprocess.run(["nordvpn", "login"])
