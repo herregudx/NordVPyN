@@ -20,7 +20,7 @@ def select_server_country():
 
 
 def extract_countries(data):
-    # The output from "nordvpn countries" is a mess so this function attempts to make it tidy.
+    # The output from "nordvpn countries" is a mess, this function attempts to make it tidy.
     # Iterate through the given list data and extract the country names.
     countries = []
     for item in data:

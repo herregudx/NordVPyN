@@ -2,12 +2,7 @@
 
 import ascii_art
 import commands
-import country
-
-
-# Variable to specify which country to connect to. This string can be left empty
-# to let the nordvpn-client select automatically.
-server_country = ""
+import config
 
 
 def show_basic_menu():
@@ -19,7 +14,7 @@ def show_basic_menu():
         commands.clear_screen()
         ascii_art.draw_logo()
         if menu_choice.upper() == "C":
-            commands.connect(server_country)
+            commands.connect(config.server_country)
         elif menu_choice.upper() == "D":
             commands.disconnect()
         elif menu_choice.upper() == "S":
@@ -61,12 +56,6 @@ def show_config_menu():
         if menu_choice.upper() == "L":
             commands.login()
         elif menu_choice.upper() == "C":
-            set_server_country()
+            commands.set_server_country()
         elif menu_choice.upper() == "B":
             show_basic_menu()
-
-
-def set_server_country():
-    # Attempts to set the server_country variable
-    global server_country
-    server_country = country.select_server_country()
