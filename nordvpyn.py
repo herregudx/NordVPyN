@@ -3,6 +3,10 @@ import ascii_art
 from sys import exit
 
 
+# Variable to specify which country to connect to. This string can be left empty.
+server_country = ""
+
+
 def main():
     check_if_nordvpn_is_installed()
     show_basic_menu()
@@ -15,7 +19,10 @@ def login():
 
 def connect():
     # Connect to VPN
-    subprocess.run(["nordvpn", "connect"])
+    if server_country != "":
+        subprocess.run(["nordvpn", "connect", server_country])
+    else:
+        subprocess.run(["nordvpn", "connect"])
 
 
 def disconnect():
@@ -41,6 +48,25 @@ def show_settings():
 def show_version():
     # Show NordVPN version
     subprocess.run(["nordvpn", "version"])
+
+
+def set_server_country():
+    # Sets the variable 'country'
+    chosen_country = input("\nSpecify country (type 'list' to show available choices): ")
+    if chosen_country.lower() == "list":
+        subprocess.run(["nordvpn", "countries"])
+        set_server_country()
+    else:
+        global server_country 
+        server_country = chosen_country
+        print(f"\nCountry set to " + server_country)
+
+
+def verify_country():
+    # TODO: This function is gonna check that the country exists among
+    # the listed countries of the command "nordvpn countries" to prevent
+    # typos in set_server_country()
+    return False
 
 
 def clear_screen():
@@ -71,7 +97,7 @@ def show_basic_menu():
             connect()
         elif menu_choice.upper() == "D":
             disconnect()
-        if menu_choice.upper() == "S":
+        elif menu_choice.upper() == "S":
             show_status()
         elif menu_choice.upper() == "M":
             show_advanced_menu()
@@ -84,7 +110,7 @@ def show_advanced_menu():
     ascii_art.draw_logo()
     # Show the user a menu with more advanced choices
     while True:
-        menu_choice = input("\n[L]ogin, [A]ccount, [S]ettings, [V]ersion, [B]ack: ")
+        menu_choice = input("\n[L]ogin, [A]ccount, [S]ettings, [C]onfig, [V]ersion, [B]ack: ")
         clear_screen()
         ascii_art.draw_logo()
         if menu_choice.upper() == "L":
@@ -93,8 +119,26 @@ def show_advanced_menu():
             show_account_info()
         elif menu_choice.upper() == "S":
             show_settings()
+        elif menu_choice.upper() == "C":
+            show_config_menu()
         elif menu_choice.upper() == "V":
             show_version()
+        elif menu_choice.upper() == "B":
+            show_basic_menu()
+
+
+def show_config_menu():
+    clear_screen()
+    ascii_art.draw_logo()
+    # Show the user a menu with choices
+    while True:
+        menu_choice = input("\n[L]ogin, [C]ountry, [B]ack: ")
+        clear_screen()
+        ascii_art.draw_logo()
+        if menu_choice.upper() == "L":
+            login()
+        elif menu_choice.upper() == "C":
+            set_server_country()
         elif menu_choice.upper() == "B":
             show_basic_menu()
 
