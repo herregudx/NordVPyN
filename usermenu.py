@@ -1,5 +1,4 @@
 import ascii_art
-import subprocess
 import commands
 import country
 
@@ -10,12 +9,12 @@ server_country = ""
 
 
 def show_basic_menu():
-    clear_screen()
+    commands.clear_screen()
     ascii_art.draw_logo()
     # Show the user a menu with choices
     while True:
         menu_choice = input("\n[C]onnect, [D]isconnect, [S]tatus, [M]ore, [Q]uit: ")
-        clear_screen()
+        commands.clear_screen()
         ascii_art.draw_logo()
         if menu_choice.upper() == "C":
             commands.connect(server_country)
@@ -30,12 +29,12 @@ def show_basic_menu():
 
 
 def show_advanced_menu():
-    clear_screen()
+    commands.clear_screen()
     ascii_art.draw_logo()
     # Show the user a menu with more advanced choices
     while True:
         menu_choice = input("\n[A]ccount, [S]ettings, [C]onfig, [V]ersion, [B]ack: ")
-        clear_screen()
+        commands.clear_screen()
         ascii_art.draw_logo()
         if menu_choice.upper() == "A":
             commands.show_account_info()
@@ -50,12 +49,12 @@ def show_advanced_menu():
 
 
 def show_config_menu():
-    clear_screen()
+    commands.clear_screen()
     ascii_art.draw_logo()
     # Show the user a menu with choices
     while True:
         menu_choice = input("\n[L]ogin, [C]ountry, [B]ack: ")
-        clear_screen()
+        commands.clear_screen()
         ascii_art.draw_logo()
         if menu_choice.upper() == "L":
             commands.login()
@@ -69,8 +68,3 @@ def set_server_country():
     # Attempts to set the server_country variable
     global server_country
     server_country = country.select_server_country()
-
-
-def clear_screen():
-    # Clear the screen to keep it tidy
-    subprocess.run(["clear"])

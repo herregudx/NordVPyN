@@ -1,3 +1,4 @@
+# This file contains the nordvpn client commands and other relevant subprocess commands
 import subprocess
 
 
@@ -8,7 +9,6 @@ def login():
 
 def connect(server_country):
     # Connect to VPN
-    print(server_country)
     if server_country != "":
         subprocess.run(["nordvpn", "connect", server_country])
     else:
@@ -38,3 +38,8 @@ def show_settings():
 def show_version():
     # Show NordVPN version
     subprocess.run(["nordvpn", "version"])
+
+
+def clear_screen():
+    # Clear the screen to keep it tidy
+    subprocess.run(["clear"])

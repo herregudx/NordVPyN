@@ -35,7 +35,6 @@ def verify_country(name_of_country):
     # Check that the country exists among the listed countries of the 
     # command "nordvpn countries" to prevent typos or trying to set a
     # country that's not available.
-
     countries_output = subprocess.Popen(["nordvpn", "countries"], stdout=subprocess.PIPE, text=True).stdout.readlines()
 
     list_of_countries = extract_countries(countries_output)
