@@ -1,3 +1,5 @@
+# Check that the nordvpn client is installed and launch the menu
+
 import subprocess
 import usermenu
 from sys import exit

@@ -1,3 +1,5 @@
+# This file contains all functions related to server country selection
+
 import subprocess
 
 

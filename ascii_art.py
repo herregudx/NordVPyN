@@ -1,3 +1,5 @@
+# Who doesn't like ASCII art?
+
 def draw_logo():
     print("""
   _   _               ___      _______       _   _ 

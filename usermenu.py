@@ -1,3 +1,5 @@
+# This file contains the menu the user can interact with
+
 import ascii_art
 import commands
 import country
