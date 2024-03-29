@@ -1,8 +1,8 @@
 # This file contains the nordvpn client commands and other relevant subprocess commands
 
 import subprocess
-import config
-import country
+import data.config as config
+import data.country as country
 from colorama import Fore, Style
 
 

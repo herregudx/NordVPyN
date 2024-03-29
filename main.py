@@ -1,8 +1,8 @@
 # Check that the nordvpn client is installed and launch the menu
 
-import commands
-import usermenu
-import config
+import data.commands as commands
+import data.usermenu as usermenu
+import data.config as config
 
 
 def main():
