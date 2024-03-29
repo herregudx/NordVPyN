@@ -1,7 +1,7 @@
 # This file contain global variables with user configurations and functions to save and read 
 # from a CSV configuration file.
 
-import csv
+import pickle
 
 def init():
     # Variable to specify which country to connect to. This string can be left empty
@@ -19,17 +19,10 @@ def init():
 
 
 def save_config():
-    with open('data/config.csv', 'w', newline='') as csvfile:
-        fieldnames = ['setting', 'value']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
-        writer.writeheader()
-        writer.writerow({'setting': 'server_country', 'value': server_country})
-        writer.writerow({'setting': 'ipv6_setting', 'value': ipv6_setting})
-        writer.writerow({'setting': 'threat_protection_setting', 'value': threat_protection_setting})
-    print("Configuration file saved.")
+    # TODO
+    print("N/A")
 
 
 def read_config():
-    # TODO: This function should read config from file and import it.
-    return 0
+    # TODO
+    print("N/A")
