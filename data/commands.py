@@ -13,7 +13,7 @@ def login():
 
 def connect(server_country):
     # Connect to VPN
-    if server_country != "":
+    if server_country != "Default":
         subprocess.run(["nordvpn", "connect", server_country])
     else:
         subprocess.run(["nordvpn", "connect"])
@@ -54,6 +54,7 @@ def set_server_country():
     # Attempts to set the server_country variable
     #global server_country
     config.server_country = country.select_server_country()
+    print(f"\nCountry set to " + config.server_country)
 
 
 def clear_screen():

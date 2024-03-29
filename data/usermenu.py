@@ -30,7 +30,7 @@ def show_advanced_menu():
     ascii_art.draw_logo()
     # Show the user a menu with more advanced choices
     while True:
-        menu_choice = input("\n[1]:Account, [2]:Settings, [3]:Config, [4]:Version, [9]:Back: ")
+        menu_choice = input("\n[1]:Account, [2]:Settings, [3]:Config, [4]:Version, [9]:Back, [0]Quit: ")
         commands.clear_screen()
         ascii_art.draw_logo()
         if menu_choice == "1":
@@ -43,6 +43,8 @@ def show_advanced_menu():
             commands.show_version()
         elif menu_choice == "9":
             show_basic_menu()
+        elif menu_choice == "0":
+            exit()
 
 
 def show_config_menu():
@@ -50,12 +52,16 @@ def show_config_menu():
     ascii_art.draw_logo()
     # Show the user a menu with choices
     while True:
-        menu_choice = input("\n[1]:Login, [2]:Country, [9]:Back: ")
+        menu_choice = input("\n[1]:Login, [2]:Country, [8]:Save, [9]:Back, [0]Quit: ")
         commands.clear_screen()
         ascii_art.draw_logo()
         if menu_choice == "1":
             commands.login()
         elif menu_choice == "2":
             commands.set_server_country()
+        elif menu_choice == "8":
+            config.save_config()
         elif menu_choice == "9":
             show_basic_menu()
+        elif menu_choice == "0":
+            exit()

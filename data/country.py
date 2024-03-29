@@ -11,12 +11,11 @@ def select_server_country():
         select_server_country()
     else:
         chosen_country = chosen_country.title()
-        if verify_country(chosen_country) == True:
-            print(f"\nCountry set to " + chosen_country)
+        if chosen_country == "Default" or verify_country(chosen_country) == True:
             return chosen_country
         else:
             print(f"Couldn't find \"{chosen_country}\", check the spelling and try again.")
-            return ""
+            return "Default"
 
 
 def extract_countries(data):
