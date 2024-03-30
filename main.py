@@ -6,7 +6,6 @@ import data.config as config
 
 
 def main():
-    config.init()
     commands.check_if_nordvpn_is_installed()
     usermenu.show_basic_menu()
 

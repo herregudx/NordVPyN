@@ -1,28 +1,43 @@
-# This file contain global variables with user configurations and functions to save and read 
-# from a CSV configuration file.
+# Save and read user settings to and from a configuration file. Work in progress.
 
-import pickle
-
-def init():
-    # Variable to specify which country to connect to. This string can be left empty
-    # to let the nordvpn-client select automatically.
-    global server_country
-    server_country = "Default"
-
-    # IPv6
-    global ipv6_setting
-    ipv6_setting = "disabled"
-
-    # Threat Protection Lite
-    global threat_protection_setting
-    threat_protection_setting = "disabled"
-
-
+import configparser
+ 
+ 
 def save_config():
-    # TODO
-    print("N/A")
+    config = configparser.ConfigParser()
+ 
+    # Add sections and key-value pairs
+    config['General'] = {'server_country': "Default", 'ipv6': 'disabled'}
+ 
+    # Write the configuration to a file
+    with open('data/config.ini', 'w') as configfile:
+        config.write(configfile)
+    
+    print("Configuration saved.")
 
 
 def read_config():
-    # TODO
-    print("N/A")
+    # Create a ConfigParser object
+    config = configparser.ConfigParser()
+ 
+    # Read the configuration file
+    config.read('data/config.ini')
+ 
+    # Access values from the configuration file
+    server_country = config.get('General', 'server_country')
+    ipv6_setting = config.get('General', 'ipv6')
+
+    # Return a dictionary with the retrieved values
+    config_values = {
+        'server_country': server_country,
+        'ipv6_setting': ipv6_setting,
+    }
+ 
+    return config_values
+ 
+ 
+if __name__ == "__main__":
+    save_config()
+    print(read_config())
+
+

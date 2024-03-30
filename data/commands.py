@@ -51,10 +51,7 @@ def show_version():
 
 
 def set_server_country():
-    # Attempts to set the server_country variable
-    #global server_country
-    config.server_country = country.select_server_country()
-    print(f"\nCountry set to " + config.server_country)
+    print("N/A")
 
 
 def clear_screen():

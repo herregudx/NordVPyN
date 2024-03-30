@@ -14,7 +14,7 @@ def show_basic_menu():
         commands.clear_screen()
         ascii_art.draw_logo()
         if menu_choice == "1":
-            commands.connect(config.server_country)
+            commands.connect("Default")
         elif menu_choice == "2":
             commands.disconnect()
         elif menu_choice == "3":
