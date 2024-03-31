@@ -4,18 +4,15 @@ import subprocess
 
 
 def select_server_country():
-    # Let's the user set which country to connect to and verify that the server exists.
-    chosen_country = input("\nSpecify country (type 'list' to show available choices): ")
-    if chosen_country.lower() == "list":
-        subprocess.run(["nordvpn", "countries"])
-        select_server_country()
-    else:
-        chosen_country = chosen_country.title()
-        if chosen_country == "Default" or verify_country(chosen_country) == True:
+    # Let the user select which country to connect to and verify that the server exists.
+    valid_country = False
+    while valid_country == False:
+        chosen_country = input("\nSpecify country (type 'list' to show available choices): ").title()
+        if chosen_country.lower() == "list":
+            subprocess.run(["nordvpn", "countries"])
+        elif verify_country(chosen_country) == True:
+            valid_country = True
             return chosen_country
-        else:
-            print(f"Couldn't find \"{chosen_country}\", check the spelling and try again.")
-            return "Default"
 
 
 def extract_countries(data):

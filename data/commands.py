@@ -1,7 +1,7 @@
 # This file contains the nordvpn client commands and other relevant subprocess commands
 
 import subprocess
-import data.config as config
+import data.ascii_art as ascii_art
 import data.country as country
 from colorama import Fore, Style
 
@@ -11,12 +11,17 @@ def login():
     subprocess.run(["nordvpn", "login"])
 
 
-def connect(server_country):
+def quick_connect():
     # Connect to VPN
-    if server_country != "Default":
-        subprocess.run(["nordvpn", "connect", server_country])
-    else:
-        subprocess.run(["nordvpn", "connect"])
+    subprocess.run(["nordvpn", "connect"])
+
+
+def connect():
+    # Connect to VPN through a specific country
+    server_country = country.select_server_country()
+    clear_screen()
+    ascii_art.draw_logo()
+    subprocess.run(["nordvpn", "connect", server_country])
 
 
 def disconnect():

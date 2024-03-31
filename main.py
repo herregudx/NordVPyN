@@ -2,7 +2,6 @@
 
 import data.commands as commands
 import data.usermenu as usermenu
-import data.config as config
 
 
 def main():
