@@ -55,10 +55,6 @@ def show_version():
     subprocess.run(["nordvpn", "version"])
 
 
-def set_server_country():
-    print("N/A")
-
-
 def clear_screen():
     # Clear the screen to keep it tidy
     subprocess.run(["clear"])
